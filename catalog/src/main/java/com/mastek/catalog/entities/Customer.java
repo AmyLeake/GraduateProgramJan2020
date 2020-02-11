@@ -1,20 +1,31 @@
 package com.mastek.catalog.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Customers")
+@Table(name="inv_Customers")
 public class Customer {
 
 	int customer_id;
 	String customer_name;
 	String address;
 	String date_of_birth;
+	
+/*	Set<Order> rel1 = new HashSet<>();
+	@OneToMany(mappedBy="customerOrders", cascade=CascadeType.ALL)
+	public Set<Order> getRel1() {
+		return rel1;
+	}*/
 	
 	//constructor
 	public Customer() {

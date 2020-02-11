@@ -1,5 +1,9 @@
 package com.mastek.catalog.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +22,18 @@ public class Category {
 	CategoryName Category_name;
 	String Description;
 	int total_items;
+	
+/*	Set<Ingredient> rel2 = new HashSet<>();
+	@OneToMany(mappedBy="ingredientCategory", cascade=CascadeType.ALL)
+	public Set<Ingredient> getRel2(){
+		return rel2;
+	}
+	
+	Set<Product> rel3 = new HashSet<>();
+	@OneToMany(mappedBy="productCategory", cascade=CascadeType.ALL)
+	public Set<Product> getRel3() {
+		return rel3;
+	}*/
 	
 	
 	//Constructor
