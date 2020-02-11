@@ -45,7 +45,7 @@ class HrappApplicationTests {
 	PaymentJPADAO paymentDAO;
 	///////////////////////////////////////////////
 	
-	@Test
+/*	@Test
 	void testCashPaymentAdd() {
 		Payment cashP = new Payment();
 		cashP.setAmount(100);
@@ -81,7 +81,7 @@ class HrappApplicationTests {
 		System.out.println(cheqP);
 		assertNotNull(cheqP, "Cheque Payment Not Saved");
 	}
-	
+	*/
 	
 	
 	
@@ -157,24 +157,49 @@ class HrappApplicationTests {
 	}
 	
 	*/
-	@Test
+/*	@Test
 	void testAssignEmployeeToDepartment() {
 					// empSVC.assignEmployeeToDepartment(empno,deptno);
 		Employee emp = empSvc.assignEmployeeToDepartment(5,10);
 		assertNotNull(emp.getCurrentDepartment(),"Department Not Assigned");
 		
-	}
+	}*/
 	
 	
 	
 	//New test from Jack
 	
-	@Test
+	/*@Test
     void testAssignEmployeeToProject() {            // empno,projectId
         Employee emp = empSvc.assignEmployeeToProject(6,6);
         assertTrue(emp.getProjectsAssigned().size()>0,"Projects assigned");
-    }
+    }*/
 
+	
+	@Test
+	void testFindEmployeeBySalary() {
+		double minSalary=100;
+		double maxSalary=5000;
+								//empDAO.findBySalary(minSalary,maxSalary)
+		Iterable<Employee>emps=empDAO.findBySalary(minSalary, maxSalary);
+		System.out.println("All employee having a salary between "+minSalary+" and "+maxSalary);
+		
+		for (Employee employee : emps) {
+			System.out.println(employee);
+		}
+	}
+	
+	
+	@Test
+	void testFindEmployeeByDesignation() {
+		Iterable<Employee> emps = empDAO.findByDesignation(Designation.ARCHITECT);
+		System.out.println("All employees with Designation as "+Designation.ARCHITECT);
+		
+		for (Employee employee : emps) {
+			System.out.println(employee);
+		}
+	}
+	
 }
 
 

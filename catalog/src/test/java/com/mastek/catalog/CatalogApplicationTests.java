@@ -11,6 +11,8 @@ import com.mastek.catalog.dao.CustomerJPADAO;
 import com.mastek.catalog.dao.IngredientJPADAO;
 import com.mastek.catalog.dao.OrderJPADAO;
 import com.mastek.catalog.dao.ProductJPADAO;
+import com.mastek.catalog.entities.Category;
+import com.mastek.catalog.entities.CategoryName;
 import com.mastek.catalog.entities.Customer;
 
 @SpringBootTest
@@ -37,7 +39,7 @@ class CatalogApplicationTests {
 	
 	//ADDING A NEW CUSTOMER
 /*	@Test
-	void textCustomerAdd() {
+	void testCustomerAdd() {
 		Customer cust = new Customer();
 		cust.setCustomer_name("Karen Leake");
 		cust.setAddress("243 Birley Spa Lane, Hackenthorpe. Sheffield");
@@ -49,7 +51,7 @@ class CatalogApplicationTests {
 		assertNotNull(cust, "Employee Not Added");
 		
 	}*/
-	
+		
 	//LISTING ALL CUSTOMERS
 	@Test
 	void testListCustomers() {
@@ -66,4 +68,21 @@ class CatalogApplicationTests {
 		custDAO.deleteById(55);
 	}*/
 
+	//ADDING CATEGORIES
+	@Test
+	void testCategoryAdd() {
+		Category cat = new Category();
+		cat.setCategory_name(CategoryName.WOMENS);
+		cat.setDescription("Formal and casual options available in multiple styles and colours.");
+		cat.setTotal_items(1000);
+		
+		cat = catDAO.save(cat);
+		
+		System.out.println(cat);
+		assertNotNull(cat, "Category Not Added");
+		
+	}
+	
+	
+	
 }

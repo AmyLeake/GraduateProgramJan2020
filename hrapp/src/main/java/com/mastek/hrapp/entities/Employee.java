@@ -16,11 +16,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity // declares the class as Entity , to be managed by tJPA.
 @Table(name="JPA_Employees") //declare the table name associated with this class
 @EntityListeners({EmployeeListener.class}) //call the appropriate listener event method on lifecycle event.
+@NamedQueries({
+	@NamedQuery(name="Employee.findBySalary", // declare the query name as the method in DAO.
+			query="select e from Employee e where e.salary between :minSalary and :maxSalary")
+			//identify the query to fetch employee objects with properties and parameters.
+			// all parameters are to be declared using @Param("<name>") in DAO interface.
+	
+	,
+	@NamedQuery(name="Employee.findByDesignation",
+		query="select e from Employee e where e.designation=:designation")
+		//identify the method in DAO and pass necessary params.
+})
 public class Employee {
 
 	int empno;
