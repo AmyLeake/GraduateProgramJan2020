@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.mastek.hrapp.dao.DepartmentJPADAO;
 import com.mastek.hrapp.dao.EmployeeJPADAO;
+import com.mastek.hrapp.dao.JobPositionsDAO;
 import com.mastek.hrapp.dao.PaymentJPADAO;
 import com.mastek.hrapp.dao.ProjectJPADAO;
 import com.mastek.hrapp.entities.CardPayment;
@@ -15,6 +16,7 @@ import com.mastek.hrapp.entities.ChequePayment;
 import com.mastek.hrapp.entities.Department;
 import com.mastek.hrapp.entities.Designation;
 import com.mastek.hrapp.entities.Employee;
+import com.mastek.hrapp.entities.JobPositions;
 import com.mastek.hrapp.entities.Location;
 import com.mastek.hrapp.entities.Payment;
 import com.mastek.hrapp.entities.Project;
@@ -43,7 +45,12 @@ class HrappApplicationTests {
 	
 	@Autowired
 	PaymentJPADAO paymentDAO;
+	
+	@Autowired
+	JobPositionsDAO jobDAO;
 	///////////////////////////////////////////////
+	
+
 	
 /*	@Test
 	void testCashPaymentAdd() {
@@ -199,6 +206,46 @@ class HrappApplicationTests {
 			System.out.println(employee);
 		}
 	}
+	
+/*	@Test
+	void testAddJobPositionDocument() {
+		JobPositions jp = new JobPositions();
+		jp.setJobId(125);
+		jp.setLocation("Sheffield");
+		jp.setClientName("NHS");
+		jp.setSkillSetRequired("Java");
+		jp.setNumberOfPositions(5);
+		
+		jp = jobDAO.save(jp);
+		
+		assertNotNull(jp, "Job Position Saved");
+			
+	}
+	*/
+	
+	@Test
+	void testListAllJobPositions() {
+		Iterable<JobPositions> jp = jobDAO.findAll();
+		assertNotNull(jp, "Jobs not found");
+		for (JobPositions job : jp) {
+			System.out.println(job);
+		}
+	}
+	
+
+	@Test
+	void testApplyForJobPositions() {
+		int jobId=122;
+		int empno=3;
+		JobPositions jp = empSvc.applyForJobPositions(jobId,empno);
+		
+		assertNotNull(jp, "Job not applied");
+		System.out.println("Applications for JOB ID: "+jobId);
+		for (Employee applicant : jp.getApplicants() ) {
+			System.out.println(applicant);
+		}
+	}
+	
 	
 }
 

@@ -20,6 +20,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity // declares the class as Entity , to be managed by tJPA.
 @Table(name="JPA_Employees") //declare the table name associated with this class
 @EntityListeners({EmployeeListener.class}) //call the appropriate listener event method on lifecycle event.
@@ -46,6 +48,7 @@ public class Employee {
 	
 	@ManyToOne//one employee is associated with one of many departments
 	@JoinColumn(name="fk_department_number") // the foreign key column to store the associated deptno.
+	@Transient //ignore this property when storing employee data in MongoDB
 	public Department getCurrentDepartment() {
 		return currentDepartment;
 	}
@@ -61,6 +64,7 @@ public class Employee {
 				joinColumns= {@JoinColumn(name="fk_empno")},
 				inverseJoinColumns = {@JoinColumn(name="fk_projectId")}
 				)
+	@Transient //ignore this property when storing employee data in MongoDB
 	public Set<Project> getProjectsAssigned() {
 		return projectsAssigned;
 	}
