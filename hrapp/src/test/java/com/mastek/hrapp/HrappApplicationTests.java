@@ -174,8 +174,6 @@ class HrappApplicationTests {
 	
 	
 	
-	//New test from Jack
-	
 	/*@Test
     void testAssignEmployeeToProject() {            // empno,projectId
         Employee emp = empSvc.assignEmployeeToProject(6,6);

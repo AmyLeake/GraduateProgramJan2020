@@ -57,6 +57,7 @@ public class Employee {
 		this.currentDepartment = currentDepartment;
 	}
 	
+	
 	Set<Project> projectsAssigned = new HashSet<>();
 	
 	@ManyToMany(cascade=CascadeType.ALL) //configure many to many association for entities
@@ -72,6 +73,8 @@ public class Employee {
 	public void setProjectsAssigned(Set<Project> projectsAssigned) {
 		this.projectsAssigned = projectsAssigned;
 	}
+	
+	
 
 	//when creating an entity we must have a constructor
 	public Employee() {

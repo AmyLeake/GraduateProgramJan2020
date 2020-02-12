@@ -48,7 +48,7 @@ public class EmployeeService {
 		System.out.println("Employee Service Initialised");
 	}
 	
-	@PreDestroy // Calls before th shutting down of the application
+	@PreDestroy // Calls before the shutting down of the application
 	public void terminateService() {
 		System.out.println("Employee Service Terminated");
 	}

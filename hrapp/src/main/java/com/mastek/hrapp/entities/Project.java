@@ -19,6 +19,7 @@ public class Project {
 	String name;
 	String customerName;
 	
+	
 	Set<Employee> projectTeam= new HashSet<>();
 		
 	@ManyToMany(mappedBy="projectsAssigned")
@@ -30,6 +31,8 @@ public class Project {
 		this.projectTeam = projectTeam;
 	}
 
+	
+	
 	//constructor
 	public Project() {
 		
