@@ -35,29 +35,29 @@ class BankserviceApplicationTests {
 	void contextLoads() {
 	}
 	
-	/*@Test
+/*	@Test
 	void testCustomerDAOAdd() {
 		Customer cust = new Customer();
-		cust.setFirst_name("Karen");
-		cust.setSurname("Leake");
-		cust.setAddress("243 Birley Spa Lane");
-		cust.setTown("Hackenthorpe");
-		cust.setCity("Sheffield");
-		cust.setPcode("S12 4BW");
-		cust.setNumber_of_accounts(1);
+		cust.setFirst_name("Jacob");
+		cust.setSurname("Mathews");
+		cust.setAddress("102 Sweet Road");
+		cust.setTown("Wigginton");
+		cust.setCity("York");
+		cust.setPcode("YO32 2AB");
+		cust.setNumber_of_accounts(2);
 		
 		cust = custDAO.save(cust);
 		
 		System.out.println(cust);
 		assertNotNull(cust, "Customer Not Added");
-	}
-
+	}*/
+/*
 	@Test
 	void testAccountDAOAdd( ) {
 		Account acc = new Account();
-		acc.setAccount_type(ActiveAccount.current);
-		acc.setSort_code(223344);
-		acc.setTotal(2000.00);
+		acc.setAccount_type(ActiveAccount.ISA);
+		acc.setSort_code(2002);
+		acc.setTotal(400.00);
 		
 		acc = accDAO.save(acc);
 		
@@ -67,33 +67,33 @@ class BankserviceApplicationTests {
 	}*/
 	
 	
-/*	@Test
+	/*@Test
 	void testTransactionDAOAdd() {
 		Transaction trans = new Transaction();
-		trans.setTransaction_date("12/20/2020");
-		trans.setAccount_from(2);
-		trans.setAccount_to(5);
-		trans.setDescription("Drinks");
-		trans.setTransaction_total(20.00);
+		trans.setTransaction_date("02/12/2019");
+		trans.setAccount_from(11);
+		trans.setAccount_to(9);
+		trans.setDescription("Groceries");
+		trans.setTransaction_total(50.00);
 		
 		trans = transDOA.save(trans);
 		
 		System.out.println(trans);
 		assertNotNull(trans, "Transaction Not Added");
 		
-	}*/
-	
-	
-	/*@Test
-	void testAssignAccountToCustomer() {
-		Account acc = bnkSvc.assignAccountToCustomer(2, 2);
-		assertTrue(acc.getCustomerAssigned().size()>0,"Customer Assigned");
-	}*/
+	}
+	*/
 	
 	@Test
+	void testAssignAccountToCustomer() {
+		Account acc = bnkSvc.assignAccountToCustomer(5, 10);
+		assertTrue(acc.getCustomerAssigned().size()>0,"Customer Assigned");
+	}
+	
+	/*@Test
 	void testAssignTransactionToAccount() {
 		Transaction trans = bnkSvc.assignTransactionToAccount(6, 2);
 		assertNotNull(trans.getAccountTransaction(), "Transaction Not Assigned");
-	}
+	}*/
 	
 }
