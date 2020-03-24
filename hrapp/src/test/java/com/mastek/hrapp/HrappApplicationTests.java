@@ -164,13 +164,13 @@ class HrappApplicationTests {
 	}
 	
 	*/
-/*	@Test
+	@Test
 	void testAssignEmployeeToDepartment() {
 					// empSVC.assignEmployeeToDepartment(empno,deptno);
 		Employee emp = empSvc.assignEmployeeToDepartment(5,10);
 		assertNotNull(emp.getCurrentDepartment(),"Department Not Assigned");
 		
-	}*/
+	}
 	
 	
 	

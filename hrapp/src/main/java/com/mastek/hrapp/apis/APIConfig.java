@@ -9,6 +9,9 @@ import com.mastek.hrapp.services.EmployeeService;
 public class APIConfig extends ResourceConfig{ //configure the service classes using ResourceConfig/
 	
 	public APIConfig() {
+		//enables the CORS filter for UI applications to access the service
+		register(CORSFilter.class);
+		
 		//Register each service class to enable services as API.
 		register(EmployeeService.class);
 	}

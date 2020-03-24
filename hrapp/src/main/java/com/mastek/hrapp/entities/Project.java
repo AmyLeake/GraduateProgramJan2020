@@ -10,19 +10,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="JPA_Project")
 public class Project {
 
 	int projectId;
+	
+	@FormParam("name")
 	String name;
+	
+	@FormParam("customerName")
 	String customerName;
 	
 	
 	Set<Employee> projectTeam= new HashSet<>();
 		
 	@ManyToMany(mappedBy="projectsAssigned")
+	@XmlTransient
 	public Set<Employee> getProjectTeam() {
 		return projectTeam;
 	}

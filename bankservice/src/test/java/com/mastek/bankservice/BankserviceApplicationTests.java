@@ -10,10 +10,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.mastek.bankservice.dao.AccountJPADAO;
 import com.mastek.bankservice.dao.CustomerJPADAO;
 import com.mastek.bankservice.dao.TransactionJPADAO;
+import com.mastek.bankservice.dao.TransferRequestJPADAO;
 import com.mastek.bankservice.entities.Account;
 import com.mastek.bankservice.entities.ActiveAccount;
 import com.mastek.bankservice.entities.Customer;
 import com.mastek.bankservice.entities.Transaction;
+import com.mastek.bankservice.entities.TransferRequest;
 import com.mastek.bankservice.services.BankService;
 
 @SpringBootTest
@@ -30,6 +32,9 @@ class BankserviceApplicationTests {
 	
 	@Autowired
 	BankService bnkSvc;
+	
+	@Autowired
+	TransferRequestJPADAO requDOA;
 
 	@Test
 	void contextLoads() {
@@ -84,16 +89,36 @@ class BankserviceApplicationTests {
 	}
 	*/
 	
-	@Test
+	/*@Test
 	void testAssignAccountToCustomer() {
 		Account acc = bnkSvc.assignAccountToCustomer(5, 10);
 		assertTrue(acc.getCustomerAssigned().size()>0,"Customer Assigned");
-	}
+	}*/
 	
 	/*@Test
 	void testAssignTransactionToAccount() {
 		Transaction trans = bnkSvc.assignTransactionToAccount(6, 2);
 		assertNotNull(trans.getAccountTransaction(), "Transaction Not Assigned");
 	}*/
+	
+	
+/*	@Test
+	void testListAllTransferRequests() {
+		Iterable<TransferRequest> tr = requDOA.findAll();
+		assertNotNull(tr, "Requests Not Found");
+		for (TransferRequest transfer : tr) {
+			System.out.println(transfer);
+		}		
+	}*/
+	
+/*	@Test
+	void testApplyForTransfer() {
+		int account_number=5;
+		int account_number=2;
+		
+	}*/
+	
+	
+	
 	
 }

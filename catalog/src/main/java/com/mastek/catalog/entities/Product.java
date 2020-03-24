@@ -1,45 +1,103 @@
 package com.mastek.catalog.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+import org.springframework.data.annotation.Transient;
+
+@XmlRootElement
 @Entity
 @Table(name="Products")
 public class Product {
 
-	int product_Id;
-	String product_name;
-	String description;
-	double price;
-	int quantity_in_stock;
+	int productId;
 	
+	@FormParam("productName")
+	String productName;
+	
+	@FormParam("description")
+	String description;
+	
+	@FormParam("price")
+	double price;
+	
+	@FormParam("quantityInStock")
+	int quantityInStock;
+	
+	Category productCategory;
+
+	//Constructor
 	public Product() {
 		
 	}
 	
-	//Getters and Setters
-	@Id
-	@Column(name="Product_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int getProduct_Id() {
-		return product_Id;
+	//Relationships
+	
+	//Product and Category
+	@ManyToOne
+	@JoinColumn(name="fk_categoryNumber")
+	@XmlTransient
+	public Category getProductCategory() {
+		return productCategory;
 	}
 	
-	public void setProduct_Id(int product_Id) {
-		this.product_Id = product_Id;
+	public void setProductCategory(Category productCategory) {
+		this.productCategory = productCategory;
+	}
+		
+	//Product and Order
+	
+	Set<Order> productsOrdered = new HashSet<>();
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="JPA_PRODUCTS_ORDERED",
+				joinColumns= {@JoinColumn(name="fk_productId")},
+				inverseJoinColumns = {@JoinColumn(name="fk_orderId")}
+				)
+	@XmlTransient
+	public Set<Order> getProductsOrdered() {
+		return productsOrdered;
+	}
+	
+	public void setProductsOrdered(Set<Order> productsOrdered) {
+		this.productsOrdered = productsOrdered;
+	}
+	
+	
+	//Getters and Setters
+	@Id
+	@Column(name="productID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int getProductId() {
+		return productId;
+	}
+	
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	
 	@Column(name="Product_Name", length=50, nullable=false)
 	public String getProduct_name() {
-		return product_name;
+		return productName;
 	}
 	
 	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+		this.productName = product_name;
 	}
 	
 	public String getDescription() {
@@ -59,26 +117,26 @@ public class Product {
 	}
 	
 	public int getQuantity_in_stock() {
-		return quantity_in_stock;
+		return quantityInStock;
 	}
 	
 	public void setQuantity_in_stock(int quantity_in_stock) {
-		this.quantity_in_stock = quantity_in_stock;
+		this.quantityInStock = quantity_in_stock;
 	}
 	
 	
 	//toString
 	@Override
 	public String toString() {
-		return "Product [product_Id=" + product_Id + ", product_name=" + product_name + ", description=" + description
-				+ ", price=" + price + ", quantity_in_stock=" + quantity_in_stock + "]";
+		return "Product [productId=" + productId + ", product_name=" + productName + ", description=" + description
+				+ ", price=" + price + ", quantity_in_stock=" + quantityInStock + "]";
 	}
 	//HashCode
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + product_Id;
+		result = prime * result + productId;
 		return result;
 	}
 	
@@ -91,7 +149,7 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		if (product_Id != other.product_Id)
+		if (productId != other.productId)
 			return false;
 		return true;
 	}

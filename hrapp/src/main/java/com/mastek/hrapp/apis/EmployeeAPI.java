@@ -1,18 +1,22 @@
-	package com.mastek.hrapp.apis;
+package com.mastek.hrapp.apis;
 
-	import javax.ws.rs.BeanParam;
+import java.util.Set;
+
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
-	import javax.ws.rs.GET;
-	import javax.ws.rs.POST;
-	import javax.ws.rs.Path;
-	import javax.ws.rs.PathParam;
-	import javax.ws.rs.Produces;
-	import javax.ws.rs.core.MediaType;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
-	import com.mastek.hrapp.entities.Employee;
+import com.mastek.hrapp.entities.Employee;
+import com.mastek.hrapp.entities.Project;
 
-	@Path("/hrapp") //url pattern to access the current API interface
-	public interface EmployeeAPI {
+@Path("/hrapp") //url pattern to access the current API interface
+public interface EmployeeAPI {
 
 	@GET //we do support http method: GET
 	@Path("/employees/list") //URL path to access this method
@@ -31,19 +35,22 @@ import javax.ws.rs.Consumes;
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Employee registerNewEmployee(@BeanParam Employee newEmployee);
+	
+	@GET
+	@Path("/employees/projects/{empno}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Set<Project> getEmployeeProjects(@PathParam("empno") int empno);
+	
+	@POST
+	@Path("/employees/projects/register")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Project registerProjectForEmployee(
+			@FormParam("empno") int empno,
+			@BeanParam Project newProject);
 }
 
-/*
-@GET
-@Path("/employees/find/{empno}")
-@Produces({MediaType.APPLICATION_JSON})
-public Employee findByEmpno(@PathParam("empno") int empno);
 
-@POST
-@Path("/employees/register")
-@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-@Produces(MediaType.APPLICATION_JSON)
-public Employee registerNewEmployee(Employee newEmployee);*/
 
 
 

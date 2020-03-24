@@ -11,49 +11,71 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 @Table(name="inv_Customers")
 public class Customer {
 
-	int customer_id;
-	String customer_name;
-	String address;
-	String date_of_birth;
+	int customerId;
 	
-/*	Set<Order> rel1 = new HashSet<>();
-	@OneToMany(mappedBy="customerOrders", cascade=CascadeType.ALL)
-	public Set<Order> getRel1() {
-		return rel1;
-	}*/
+	@FormParam("customerName")
+	String customerName;
+	
+	@FormParam("address")
+	String address;
+	
+	@FormParam("dateOfBirth")
+	String dateOfBirth;
 	
 	//constructor
 	public Customer() {
 		
 	}
 	
+	Set<Order> orderRecords= new HashSet<>();
+	
+	//Relationships
+	
+	//Customer and Order
+
+	@OneToMany(mappedBy="customerOrder", cascade=CascadeType.ALL)
+	@XmlTransient
+	public Set<Order> getOrderRecords() {
+		return orderRecords;
+	}
+	
+	public void setOrderRecords(Set<Order> orderRecords) {
+		this.orderRecords = orderRecords;
+	}
+
+	
+	
 	//GETTERS AND SETTERS
 	@Id
-	@Column(name="Customer_Id")
+	@Column(name="customerId")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int getCustomer_id() {
-		return customer_id;
+	public int getcustomerId() {
+		return customerId;
 	}
 
 
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setcustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 
-	@Column(name="Customer_Name", length=50, nullable=false)
-	public String getCustomer_name() {
-		return customer_name;
+	@Column(name="customerName", length=50, nullable=false)
+	public String getcustomerName() {
+		return customerName;
 	}
 
 
-	public void setCustomer_name(String customer_name) {
-		this.customer_name = customer_name;
+	public void setcustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 
@@ -67,23 +89,22 @@ public class Customer {
 	}
 
 
-	public String getDate_of_birth() {
-		return date_of_birth;
+	public String getdateOfBirth() {
+		return dateOfBirth;
 	}
 
 
-	public void setDate_of_birth(String date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setdateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
-	
-	
+
 
 	//TOSTRING
 	@Override
 	public String toString() {
-		return "Customer [customer_id=" + customer_id + ", customer_name=" + customer_name + ", address=" + address
-				+ ", date_of_birth=" + date_of_birth + "]";
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", address=" + address
+				+ ", dateOfBirth=" + dateOfBirth + "]";
 	}
 	
 	
@@ -92,11 +113,11 @@ public class Customer {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + customer_id;
+		result = prime * result + customerId;
 		return result;
 		
-		
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -106,7 +127,7 @@ public class Customer {
 		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		if (customer_id != other.customer_id)
+		if (customerId != other.customerId)
 			return false;
 		return true;
 	}
