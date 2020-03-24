@@ -52,7 +52,7 @@ class HrappApplicationTests {
 	
 
 	
-/*	@Test
+	@Test
 	void testCashPaymentAdd() {
 		Payment cashP = new Payment();
 		cashP.setAmount(100);
@@ -88,7 +88,7 @@ class HrappApplicationTests {
 		System.out.println(cheqP);
 		assertNotNull(cheqP, "Cheque Payment Not Saved");
 	}
-	*/
+	
 	
 	
 	
@@ -98,7 +98,7 @@ class HrappApplicationTests {
 		empSvc1.exampleMethod();
 	}
 	
-/*	@Test void testEmployeeDAOAdd() {
+	@Test void testEmployeeDAOAdd() {
 		Employee emp = new Employee();
 		emp.setName("Employee 13");
 		emp.setSalary(1013);
@@ -108,7 +108,7 @@ class HrappApplicationTests {
 		
 		System.out.println(emp);
 		assertNotNull(emp, "Employee Not Added");
-	}*/
+	}
 	
 	@Test
 	void testListEmployees() {
@@ -164,13 +164,13 @@ class HrappApplicationTests {
 	}
 	
 	*/
-	@Test
+	/*@Test
 	void testAssignEmployeeToDepartment() {
 					// empSVC.assignEmployeeToDepartment(empno,deptno);
 		Employee emp = empSvc.assignEmployeeToDepartment(5,10);
 		assertNotNull(emp.getCurrentDepartment(),"Department Not Assigned");
 		
-	}
+	}*/
 	
 	
 	
@@ -205,7 +205,7 @@ class HrappApplicationTests {
 		}
 	}
 	
-/*	@Test
+	@Test
 	void testAddJobPositionDocument() {
 		JobPositions jp = new JobPositions();
 		jp.setJobId(125);
@@ -219,7 +219,7 @@ class HrappApplicationTests {
 		assertNotNull(jp, "Job Position Saved");
 			
 	}
-	*/
+	
 	
 	@Test
 	void testListAllJobPositions() {
@@ -231,7 +231,7 @@ class HrappApplicationTests {
 	}
 	
 
-	@Test
+	/*@Test
 	void testApplyForJobPositions() {
 		int jobId=122;
 		int empno=3;
@@ -242,7 +242,7 @@ class HrappApplicationTests {
 		for (Employee applicant : jp.getApplicants() ) {
 			System.out.println(applicant);
 		}
-	}
+	}*/
 	
 	
 }
