@@ -21,7 +21,7 @@ public class Customer {
 	String customerName;
 	String address;
 	String email;
-	int contactNumber;
+	String contactNumber;
 	SubscriptionType subscriptionType;
 	
 	public Customer() {
@@ -65,14 +65,14 @@ public class Customer {
 	}
 
 	@Column(name="contact_number")
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-
+	
 	@Column(name="subscription_type")
 	@Enumerated(EnumType.STRING)
 	public SubscriptionType getSubscriptionType() {
