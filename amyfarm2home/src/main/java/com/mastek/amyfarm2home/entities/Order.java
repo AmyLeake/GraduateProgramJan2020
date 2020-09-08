@@ -1,10 +1,18 @@
 package com.mastek.amyfarm2home.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
+@Entity
+@Table(name="Orders")
+@EntityListeners({EntityListeners.class})
 public class Order {
 
 	int orderID;
