@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mastek.</groupId>
-	<artifactId>amyfarm2home</artifactId>
+	<artifactId>farm2home</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>amyfarm2home</name>
 	<description>Demo project for Spring Boot</description>

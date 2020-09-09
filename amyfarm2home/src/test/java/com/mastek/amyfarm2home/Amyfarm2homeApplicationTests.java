@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.mastek.amyfarm2home.daos.CustomerJPADAO;
-import com.mastek.amyfarm2home.daos.FarmerJPADAO;
-import com.mastek.amyfarm2home.daos.OrderJPADAO;
-import com.mastek.amyfarm2home.daos.ProductJPADAO;
-import com.mastek.amyfarm2home.entities.Customer;
-import com.mastek.amyfarm2home.entities.SubscriptionType;
+import com.mastek.farm2home.daos.CustomerJPADAO;
+import com.mastek.farm2home.daos.FarmerJPADAO;
+import com.mastek.farm2home.daos.OrderJPADAO;
+import com.mastek.farm2home.daos.ProductJPADAO;
+import com.mastek.farm2home.entities.Customer;
+import com.mastek.farm2home.entities.SubscriptionType;
 
 @SpringBootTest
 class Amyfarm2homeApplicationTests {
